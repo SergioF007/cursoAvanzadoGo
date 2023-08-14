@@ -53,7 +53,7 @@ func (s *Service) Work(job int) {
 	fmt.Printf("Calculate Fibonacci for %d\n", job)
 	result := ExpensiveFibonacci(job)
 
-	// ya que calculamos la serie fibonacci guadamos su resultado y lo almacenamos en result
+	// ya que calculamos la serie fibonacci guardamos su resultado y lo almacenamos en result
 	// para consultar los datos vamos, bloquiamos y habilitamos la lectura
 	s.Lock.RLock()
 	// traemos pos Workers que estaba esperando los resultados que la funcion a calculado y si existen o no
