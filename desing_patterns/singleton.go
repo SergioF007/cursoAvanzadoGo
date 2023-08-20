@@ -19,6 +19,8 @@ var db *DataBase
 var lock sync.Mutex
 
 func getDataBaseIntance() *DataBase {
+	// implementamos estas dos lineas para corregir el error que se causa en las goroutines al no
+	// garantizar que se alla terminado un proceso para comenzar el otro, ya que solo necesitamos que con la primera ya pueda crear la conexion
 	lock.Lock()
 	defer lock.Unlock()
 	// estamos validadno si ya hay una instancia creada, por lo que si no la hay, sera igual a nil y toca crearla
