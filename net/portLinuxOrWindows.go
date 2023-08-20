@@ -49,14 +49,14 @@ func main() {
 	//wg.Add(1000)
 	for i := 0; i < 65535; i++ {
 		wg.Add(1)
-		go func(j int) {
+		go func(port int) {
 			defer wg.Done()
-			conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", *host, j))
+			conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", *host, port))
 			if err != nil {
 				return
 			}
 			conn.Close()
-			fmt.Printf("[+] port %d open!!\n", j)
+			fmt.Printf("[+] port %d open!!\n", port)
 		}(i)
 	}
 	wg.Wait()
