@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Creo el contrato de metodos que tiene que implemetar Computer
 type IProduct interface {
 	setStock(stock int)
 	getStock() int
@@ -14,6 +15,8 @@ type Computer struct {
 	stock int
 }
 
+// Se cumple con el contrato al implemetar todos los metodos por lo que
+// el struc Computer esta usando de manera implisita la interfaz
 func (c *Computer) setStock(stock int) {
 	c.stock = stock
 }
@@ -31,7 +34,6 @@ func (c *Computer) getName() string {
 }
 
 // Vamos a aplicar composicion para representar una herencia de un clase que tiene relacion con Computer
-
 type Laptop struct {
 	Computer
 }
@@ -47,7 +49,7 @@ func newLaptop() IProduct {
 			stock: 25,
 		},
 	}
-}
+} // es fue un ejemplo como Lapto puede implementar los atributos de Computer
 
 // Creamos otra subclase
 
