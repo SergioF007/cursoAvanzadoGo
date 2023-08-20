@@ -4,6 +4,8 @@ import "fmt"
 
 type Topic interface {
 	register(observer Observer)
+	// esto notifica a los observadores que ha ocurrido el evento que se estaba
+	//esperando que ocurriera
 	broadCast()
 }
 
@@ -13,11 +15,13 @@ type Observer interface {
 }
 
 // Item -> No Disponible en primera instacia
-// Itnem -> Avise -> HAY ITEM
+// Item -> Avise -> HAY ITEM
+
+// este Item struct es el objeto que representa el estado del observable
 type Item struct {
-	observers []Observer
+	observers []Observer // es la variable que se crea para que este observando la disponibilidad del producto
 	name      string
-	available bool
+	available bool // esta variable indica cuando hay o no hay disponinlidad del item
 }
 
 // constructor de Item
@@ -35,6 +39,7 @@ func (i *Item) UpdateAvailable() {
 	i.broadCast()
 }
 
+// implementamos los metodos de la interfaces para que el struc de Item
 func (i *Item) register(observer Observer) {
 	i.observers = append(i.observers, observer)
 }
@@ -46,7 +51,7 @@ func (i *Item) broadCast() {
 	}
 }
 
-// creamos un notificador de tipo email.
+// creamos un notificador de tipo email, este va hacer un tipo de observer.
 type EmailClient struct {
 	id string
 }
