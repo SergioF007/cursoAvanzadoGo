@@ -16,6 +16,9 @@ func ProcessPayment(p Payment) {
 	p.Pay()
 }
 
+// Lo anterior es el primer compartamiento del metodo que esta implementado
+// lo que hicimos es que mediante una interfaz implementamos  el metodo Pay del struc CashPayment
+
 type BankPayment struct{}
 
 func (BankPayment) Pay(bankAccount int) {
@@ -29,8 +32,10 @@ type BankPaymentAdapter struct {
 }
 
 // Vamos hacer que BankPaymentAdapter implemete el Pay de la manera correcta
+// como vemos esta funcion espera es el adaptador. que esta construido con su objeto principal
+// y el valor que va a resivir el metodo que se pretende adaptar
 func (bpa *BankPaymentAdapter) Pay() {
-	bpa.BankPayment.Pay(bpa.bankAccount)
+	bpa.BankPayment.Pay(bpa.bankAccount) // aquie estariamos creando la sobreescritura del metodo
 }
 
 func main() {
