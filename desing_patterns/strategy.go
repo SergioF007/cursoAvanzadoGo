@@ -12,6 +12,7 @@ type HashAlgorithm interface {
 	Hast(p *PasswordProtector)
 }
 
+// creamos el constructor de PasswordProtector
 func NewPassrordProtector(user string, passwordName string, hash HashAlgorithm) *PasswordProtector {
 	return &PasswordProtector{
 		user:          user,
@@ -20,6 +21,7 @@ func NewPassrordProtector(user string, passwordName string, hash HashAlgorithm) 
 	}
 }
 
+// vamos hacer que HashAlgorithm sea intercambiable
 func (p *PasswordProtector) SetHashAlgorithm(hash HashAlgorithm) {
 	p.hashAlgorithm = hash
 
