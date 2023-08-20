@@ -67,6 +67,7 @@ func newDesktop() IProduct {
 	}
 }
 
+// Aqui instaciamos nuestros objetos(Subclases)
 func GetComputerFactory(computerType string) (IProduct, error) {
 
 	if computerType == "laptop" {
@@ -81,6 +82,8 @@ func GetComputerFactory(computerType string) (IProduct, error) {
 }
 
 // Creo la funcion que me va imprimir la informacion de la supclase de interes.
+// aqui estamos aplicando un metodo polimorfo en nuestras objetos
+// usea, se puede implementar a ambos objetos ya que su logica en este caso se quiere que sea compartida
 func printNameAndStock(p IProduct) {
 	fmt.Printf("Product name: %s, with stock %d\n", p.getName(), p.getStock())
 }
